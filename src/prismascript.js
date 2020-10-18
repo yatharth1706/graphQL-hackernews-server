@@ -3,14 +3,12 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main(){
-    const newPost = await prisma.link.create({
-        data : {
-            description : "Fullstack tutorial for GraphQL",
-            url : "www.howtographql.com"
-        }
+    
+    let filteredLink = await prisma.link.findFirst({
+        where : { id : 1}
     })
-    const allLinks = await prisma.link.findMany();
-    console.log(allLinks);
+    console.log(filteredLink);
+    prisma.link.update()
 }
 
 main().catch((e) => {throw e;}).finally(async () => await prisma.$disconnect());
