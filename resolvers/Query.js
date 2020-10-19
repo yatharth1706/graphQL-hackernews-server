@@ -1,4 +1,4 @@
-function feed(parent, args, context){
+async function feed(parent, args, context){
     return context.prisma.link.findMany()
 }
 
